@@ -1,0 +1,6 @@
+app: Fixture
+domain: https://fix+ture.com
+
+source: .
+authors: _authors
+dest: ../dist

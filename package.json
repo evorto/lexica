@@ -1,0 +1,50 @@
+{
+  "name": "@evorto/lexica",
+  "version": "0.0.1",
+  "description": "CLI Tools for E-Learning Content.",
+  "license": "ISC",
+  "author": "Lukas Nehrke <lukas.nehrke@gmail.com>",
+  "homepage": "https://github.com/evorto/lexica",
+  "repository": "https://github.com/evorto/lexica",
+  "bugs": "https://github.com/evorto/lexica/issues",
+  "main": "./lib/cli.js",
+  "bin": {
+    "lexicon": "./lib/cli.js"
+  },
+  "files": [
+    "lib",
+    "template"
+  ],
+  "engines": {
+    "node": ">=10.12.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "build:fixture": "ts-node src/cli.ts build --config fixture/lexicon.yaml",
+    "clean": "rm -rf lib dist"
+  },
+  "dependencies": {
+    "commander": "^7.1.0",
+    "ejs": "^3.1.6",
+    "markdown-it": "^12.0.4",
+    "markdown-it-attrs": "^4.0.0",
+    "markdown-it-emoji": "^2.0.0",
+    "winston": "^3.3.3",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.0.6",
+    "@types/markdown-it": "^12.0.1",
+    "@types/node": "^14.14.32",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.21.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}

@@ -1,0 +1,51 @@
+<script>
+  import Category from '$components/lexicon/Category.svelte'
+  import CategoryItem from '$components/lexicon/CategoryItem.svelte'
+</script>
+
+<svelte:head>
+  <meta name="twitter:card" content="summary" />
+
+  <% if (domain) { %>
+    <link rel="canonical" href="<%= domain %><%= category.url %>" />
+  <% } %>
+
+  <% if (categories.length === 1) { %>
+    <title><%= category.title %> - <%= app %></title>
+    <meta name="twitter:title" content="<%= category.title %> - <%= app %>" />
+  <% } else { %>
+    <title><%= category.title %> - <%= categories[0].title %> - <%= app %></title>
+    <meta name="twitter:title" content="<%= category.title %> - <%= categories[0].title %> - <%= app %>" />
+  <% } %>
+
+  <% if (category.description) { %>
+    <meta name="description" content="<%= category.description %>" />
+    <meta name="twitter:description" content="<%= category.description %>" />
+    <meta property="og:description" content="<%= category.description %>" />
+  <% } %>
+</svelte:head>
+
+<Category>
+  <div class="breadcrumbs">
+    <div class="breadcrumbs__content">
+      <% for (let i = 0; i < categories.length; i++) { %>
+        <% if (i !== 0) { %>
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+          </svg>
+        <% } %>
+        <a class="subtitle-2" href="<%= categories[i].url %>"><%= categories[i].title %></a>
+      <% } %>
+    </div>
+  </div>
+  <div slot="content">
+    <% for (const child of children) { %>
+      <CategoryItem
+        type="<%= child.type %>"
+        title="<%= child.title %>"
+        url="<%= child.url %>"
+        description="<%= child.description %>"
+      />
+    <% } %>
+  </div>
+</Category>

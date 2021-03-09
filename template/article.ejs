@@ -1,0 +1,84 @@
+<script>
+  import ExternalLink from '$components/lexicon/ExternalLink.svelte'
+  import Lecture from '$components/lexicon/Lecture.svelte'
+</script>
+
+<svelte:head>
+  <% if (domain) { %>
+    <link rel="canonical" href="<%= domain %><%= article.url %>" />
+  <% } %>
+
+  <% if (lecture.pages.length > 0 && lecture.pages[0] === article.slug) { %>
+    <title><%= lecture.title %> - <%= app %></title>
+  <% } else { %>
+    <title><%= article.title %> - <%= lecture.title %> - <%= app %> </title>
+  <% } %>
+  <% if (article.description) { %>
+    <meta name="description" content="<%= article.description %>">
+  <% } %>
+
+  <% if (authors.length === 1) { %>
+    <meta name="author" content="<%= authors[0].name %>">
+  <% } %>
+</svelte:head>
+
+<Lecture
+  slug="<%= article.slug %>"
+  path="<%= article.path %>"
+  pages={[<%- pageList %>]}
+  authors={<%- JSON.stringify(authors) %>}
+  previous={<%- previous %>}
+  next={<%- next %>}
+>
+
+  <div class="breadcrumbs">
+    <div class="breadcrumbs__content">
+      <% for (let i = 0; i < categories.length; i++) { %>
+        <% if (i !== 0) { %>
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+          </svg>
+        <% } %>
+        <a class="subtitle-2" href="<%= categories[i].url %>"><%= categories[i].title %></a>
+      <% } %>
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+      </svg>
+      <a class="subtitle-2" href="<%= lecture.url %>"><%= lecture.title %></a>
+    </div>
+  </div>
+
+  <div slot="content">
+    <%- content %>
+  </div>
+
+  <% if (toc && toc.length > 0) { %>
+    <div slot="side">
+      <ul>
+        <% for (const child of toc) { %>
+          <li>
+            <a href="<%= article.url%>#<%= child.id %>"><%- child.title %></a>
+            <% if (child.children && child.children.length > 0) { %>
+              <ul>
+                <% for (const child2 of child.children) { %>
+                  <li>
+                    <a href="<%= article.url%>#<%= child2.id %>"><%- child2.title %></a>
+                    <% if (child2.children && child2.children.length > 0) { %>
+                      <ul>
+                        <% for (const child3 of child2.children) { %>
+                          <li>
+                            <a href="<%= article.url%>#<%= child3.id %>"><%- child3.title %></a>
+                          </li>
+                        <% }%>
+                      </ul>
+                    <% }%>
+                  </li>
+                <% }%>
+              </ul>
+            <% }%>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  <% } %>
+</Lecture>
