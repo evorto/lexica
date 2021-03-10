@@ -4,7 +4,7 @@ import * as attrs from "markdown-it-attrs";
 import assets from "./plugins/assets";
 import links from "./plugins/links";
 import toc from "./plugins/toc";
-import {Article, Lecture, Options} from "../tools/build";
+import { Article, Lecture, Options } from "../tools/build";
 
 const buildBasic = () => {
   return new Markdown({
