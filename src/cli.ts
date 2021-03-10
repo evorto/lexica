@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { program } from "commander";
 import { logger, setupLoggers } from "./logger";
 import * as tools from "./tools";

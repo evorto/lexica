@@ -9,7 +9,7 @@
   "bugs": "https://github.com/evorto/lexica/issues",
   "main": "./lib/cli.js",
   "bin": {
-    "lexicon": "./lib/cli.js"
+    "lexica": "./lib/cli.js"
   },
   "files": [
     "lib",
