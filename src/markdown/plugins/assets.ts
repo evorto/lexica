@@ -12,7 +12,7 @@ export default (md: Markdown): void => {
         logger.warn("Asset " + asset + " could not not found");
       } else {
         const path = filepath.join(env.lectureUrl, filepath.basename(src));
-        copyAsset(asset, path, src);
+        copyAsset(env.assetDest, asset, path, src);
         tokens[idx].attrSet("src", decodeURI(path.replace(/\\/g, "/")));
       }
     }
@@ -34,7 +34,7 @@ export default (md: Markdown): void => {
             return;
           }
           const path = filepath.join(state.env.lectureUrl, filepath.basename(p1));
-          copyAsset(asset, path, p1);
+          copyAsset(state.env.assetDest, asset, path, p1);
           return 'src="' + decodeURI(path.replace(/\\/g, "/")) + '"';
         } else {
           return match;
@@ -49,8 +49,8 @@ function isRelative(link: string) {
   return link.startsWith("./") || link.startsWith("../");
 }
 
-function copyAsset(from: string, path: string, src: string) {
-  const out = filepath.join("dist", "_assets", filepath.dirname(path));
+function copyAsset(dest: string, from: string, path: string, src: string) {
+  const out = filepath.join(dest, filepath.dirname(path));
   if (!fs.existsSync(out)) {
     fs.mkdirSync(out, { recursive: true });
   }

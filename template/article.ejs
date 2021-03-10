@@ -4,17 +4,24 @@
 </script>
 
 <svelte:head>
+  <meta name="twitter:card" content="summary" />
+
   <% if (domain) { %>
     <link rel="canonical" href="<%= domain %><%= article.url %>" />
   <% } %>
 
   <% if (lecture.pages.length > 0 && lecture.pages[0] === article.slug) { %>
     <title><%= lecture.title %> - <%= app %></title>
+    <meta name="twitter:title" content="<%= lecture.title %> - <%= app %>" />
   <% } else { %>
-    <title><%= article.title %> - <%= lecture.title %> - <%= app %> </title>
+    <title><%= article.title %> - <%= lecture.title %> - <%= app %></title>
+    <meta name="twitter:title" content="<%= article.title %> - <%= lecture.title %> - <%= app %>" />
   <% } %>
+
   <% if (article.description) { %>
     <meta name="description" content="<%= article.description %>">
+    <meta name="twitter:description" content="<%= article.description %>" />
+    <meta property="og:description" content="<%= article.description %>" />
   <% } %>
 
   <% if (authors.length === 1) { %>
@@ -24,7 +31,7 @@
 
 <Lecture
   slug="<%= article.slug %>"
-  path="<%= article.path %>"
+  path="<%= path %>"
   pages={[<%- pageList %>]}
   authors={<%- JSON.stringify(authors) %>}
   previous={<%- previous %>}

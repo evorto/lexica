@@ -1,5 +1,6 @@
 app: Fixture
 domain: https://fix+ture.com
+github: https://github.com/evorto/lexica/blob/main/fixture
 
 source: .
 authors: _authors

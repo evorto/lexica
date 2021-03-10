@@ -34,7 +34,7 @@ export type Article = {
   description: string;
 };
 
-type Options = {
+export type Options = {
   source: string;
   authors: string;
   dest: string;
@@ -157,13 +157,14 @@ export const build = (options: Options) => {
         build(dest: string, pages: any, pageList: string[], authors: Author[], previous: string, next: string) {
           fs.mkdirSync(filepath.join(dest, this.url), { recursive: true });
           const md = fs.readFileSync(filepath.join(this.path, "README.md"), "utf8");
-          const { content, env } = renderArticle(this, current!, md);
+          const { content, env } = renderArticle(options, this, current!, md);
           const out = ejs.render(tmpArticle, {
             app: options.app,
             domain: options.domain,
             lecture: current,
             article: this,
             toc: env.generatedToc,
+            path: filepath.relative(options.source, this.path),
             content,
             categories,
             pages,
