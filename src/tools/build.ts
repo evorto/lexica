@@ -163,6 +163,7 @@ export const build = (options: Options) => {
             domain: options.domain,
             lecture: current,
             article: this,
+            hasMath: env.hasMath,
             toc: env.generatedToc,
             path: filepath.relative(options.source, this.path),
             content,

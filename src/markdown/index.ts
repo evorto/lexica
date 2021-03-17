@@ -2,6 +2,7 @@ import * as Markdown from "markdown-it";
 import * as emoji from "markdown-it-emoji";
 import * as attrs from "markdown-it-attrs";
 import containers from "./plugins/containers";
+import math from "./plugins/math";
 import assets from "./plugins/assets";
 import links from "./plugins/links";
 import toc from "./plugins/toc";
@@ -18,6 +19,7 @@ const mdArticle = buildBasic();
 mdArticle.use(emoji);
 mdArticle.use(attrs);
 mdArticle.use(containers)
+mdArticle.use(math);
 mdArticle.use(assets);
 mdArticle.use(links);
 mdArticle.use(toc);
@@ -27,7 +29,9 @@ export const renderArticle = (options: Options, article: Article, lecture: Lectu
     assetDest: options.assetDest,
     path: article.path,
     lectureUrl: lecture.url,
+    hasMath: false,
     generatedToc: [],
   };
-  return { content: mdArticle.render(content, env), env };
+  const html = mdArticle.render(content, env)
+  return { content: html, env };
 };

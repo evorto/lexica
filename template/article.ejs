@@ -1,6 +1,7 @@
 <script>
   import ExternalLink from '$components/lexicon/ExternalLink.svelte'
   import Lecture from '$components/lexicon/Lecture.svelte'
+  import Math from '$components/lexicon/Math.svelte'
 </script>
 
 <svelte:head>
@@ -56,7 +57,13 @@
   </div>
 
   <div slot="content">
-    <%- content %>
+    <% if (hasMath) { %>
+      <Math>
+        <%- content %>
+      </Math>
+    <% } else { %>
+      <%- content %>
+    <% } %>
   </div>
 
   <% if (toc && toc.length > 0) { %>
