@@ -127,13 +127,13 @@ export const build = (options: Options) => {
 
       const pageList = pages.map((page) => str(page));
 
-      let nx;
-      let pr;
+      let nx: string;
+      let pr: string;
       for (const page of pages) {
         pr = page.index > 0 ? str(pages.find((_) => _.index === page.index - 1)) : "undefined";
         nx = page.index < lecture.pages.length - 1 ? str(pages.find((_) => _.index === page.index + 1)) : "undefined";
         const aut = authors.filter((_) => page.authors && page.authors.indexOf(_.id) >= 0);
-        page.build(options.dest, pages, pageList, aut, nx, pr);
+        page.build(options.dest, pages, pageList, aut, pr, nx);
       }
 
       current = null;
