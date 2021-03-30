@@ -1,7 +1,26 @@
-# Lexica 
-![GitHub](https://img.shields.io/github/license/evorto/lexica?style=flat-square)
+# Lexica
 
-Lexica compiles files from [Lexicon](https://github.com/evorto/lexicon) into Svelte files.
+An advanced SSG for [Lexicon](https://github.com/evorto/lexicon).  
+Source files are currently compiled into .svelte files.
+
+## Usage
+
+Install this package via npm.
+
+```
+pnpm add @evorto/lexica
+lexica build --config lexicon.yaml
+```
+
+## Development
+
+Lexica uses [pnpm](https://pnpm.js.org/) for dependencies and scripts.
+
+```
+npm i -g pnpm
+pnpm i
+pnpm -r build
+```
 
 ## License
 
