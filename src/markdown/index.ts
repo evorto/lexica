@@ -6,6 +6,7 @@ import math from "./plugins/math";
 import assets from "./plugins/assets";
 import links from "./plugins/links";
 import toc from "./plugins/toc";
+import wrapper from "./plugins/wrapper";
 import { Article, Lecture, Options } from "../tools/build";
 
 const buildBasic = () => {
@@ -18,6 +19,7 @@ const buildBasic = () => {
 const mdArticle = buildBasic();
 mdArticle.use(emoji);
 mdArticle.use(attrs);
+mdArticle.use(wrapper);
 mdArticle.use(containers)
 mdArticle.use(math);
 mdArticle.use(assets);
