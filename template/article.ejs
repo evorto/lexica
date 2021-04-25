@@ -1,7 +1,9 @@
 <script>
   import ExternalLink from '$lib/components/lexicon/ExternalLink.svelte'
   import Lecture from '$lib/components/lexicon/Lecture.svelte'
-  import Math from '$lib/components/lexicon/Math.svelte'
+  <% if (hasMath) { %>
+    import Math from '$lib/components/lexicon/Math.svelte'
+  <% } %>
 </script>
 
 <svelte:head>
