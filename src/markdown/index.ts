@@ -20,7 +20,7 @@ const mdArticle = buildBasic();
 mdArticle.use(emoji);
 mdArticle.use(attrs);
 mdArticle.use(wrapper);
-mdArticle.use(containers)
+mdArticle.use(containers);
 mdArticle.use(math);
 mdArticle.use(assets);
 mdArticle.use(links);
@@ -34,6 +34,6 @@ export const renderArticle = (options: Options, article: Article, lecture: Lectu
     hasMath: false,
     generatedToc: [],
   };
-  const html = mdArticle.render(content, env)
+  const html = mdArticle.render(content, env);
   return { content: html, env };
 };

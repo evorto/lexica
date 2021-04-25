@@ -5,6 +5,6 @@ export default (md: Markdown): void => {
     return '<div class="table-wrapper"><table class="table">\n';
   };
   md.renderer.rules.table_close = function () {
-    return '</table></div>\n';
+    return "</table></div>\n";
   };
-}
+};

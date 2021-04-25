@@ -22,6 +22,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "build:fixture": "ts-node src/cli.ts build --config fixture/lexicon.yaml",
+    "format": "prettier --write .",
     "clean": "rm -rf lib dist"
   },
   "dependencies": {
